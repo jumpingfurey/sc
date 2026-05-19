@@ -1,1 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JumpingLury Banner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
 
+body {
+    background: #1a1a2e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    gap: 30px;
+    padding: 40px 20px;
+}
+
+/* ============================================
+   BANNER 1 — MAIN COMMISSION BANNER
+   960x540 — good for Discord
+   ============================================ */
+.banner {
+    width: 960px;
+    height: 540px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #0a0e17;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+    cursor: pointer;
+}
+
+/* Animated gradient background */
+.banner-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(0,212,255,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(124,58,237,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 80%, rgba(0,212,255,0.06) 0%, transparent 50%),
+        linear-gradient(135deg, #0a0e17 0%, #0d1420 50%, #0a0e17 100%);
+}
+
+/* Animated grid lines */
+.banner-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(60px); }
+}
+
+/* Glowing orbs */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: orbFloat 8s ease-in-out infinite;
+}
+
+.orb1 {
+    width: 300px; height: 300px;
+    background: rgba(0,212,255,0.12);
+    top: -100px; left: -80px;
+    animation-delay: 0s;
+}
+
+.orb2 {
+    width: 250px; height: 250px;
+    background: rgba(124,58,237,0.15);
+    bottom: -80px; right: -60px;
+    animation-delay: -3s;
+}
+
+.orb3 {
+    width: 180px; height: 180px;
+    background: rgba(0,212,255,0.08);
+    top: 50%; right: 200px;
+    animation-delay: -5s;
+}
+
+@keyframes orbFloat {
+    0%,100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(20px,-15px) scale(1.05); }
+    66% { transform: translate(-10px,10px) scale(0.95); }
+}
+
+/* Particles */
+.banner-particles {
+    position: absolute;
+    inset: 0;
+}
+
+.bp {
+    position: absolute;
+    border-radius: 50%;
+    animation: bpFloat linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes bpFloat {
+    0% { transform: translateY(600px) rotate(0deg); opacity:0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-20px) rotate(720deg); opacity:0; }
+}
+
+/* Main content */
+.banner-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+    gap: 0;
+}
+
+/* LEFT side */
+.banner-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Top tag */
+.banner-top-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.25);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-family: 'Fira Code', monospace;
+    color: #00d4ff;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
+.banner-top-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #00d4ff;
+    animation: tagPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes tagPulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50% { opacity:0.4; transform:scale(0.7); }
+}
+
+/* Name */
+.banner-name {
+    font-size: 62px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: -2px;
+}
+
+.banner-name .n1 { color: #ffffff; }
+.banner-name .n2 {
+    background: linear-gradient(135deg, #00d4ff, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Subtitle */
+.banner-sub {
+    font-size: 15px;
+    color: #94a3b8;
+    margin-bottom: 25px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.banner-sub::before {
+    content: '//';
+    color: #00d4ff;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+}
+
+/* Price boxes */
+.banner-prices {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.price-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 12px 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.price-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, #00d4ff, #7c3aed);
+}
+
+.price-box.highlight {
+    border-color: rgba(0,212,255,0.3);
+    background: rgba(0,212,255,0.06);
+}
+
+.price-box-label {
+    font-size: 9px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.price-box-usd {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+}
+
+.price-box-rbx {
+    font-size: 11px;
+    color: #10b981;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+/* CTA */
+.banner-cta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 28px;
+    background: linear-gradient(135deg, #00d4ff, #7c3aed);
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 30px rgba(0,212,255,0.3);
+}
+
+.cta-btn i { font-size: 14px; }
+
+.cta-discord {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.cta-discord i { color: #5865F2; font-size: 16px; }
+.cta-discord span { color: #fff; font-weight: 700; }
+
+/* RIGHT side */
+.banner-right {
+    width: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Code card */
+.code-card {
+    background: rgba(17,24,39,0.9);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    width: 290px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(0,212,255,0.08);
+    animation: cardFloat 5s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+    0%,100% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-12px) rotate(-1deg); }
+}
+
+.code-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.cc-dots { display: flex; gap: 6px; }
+.ccd { width: 10px; height: 10px; border-radius: 50%; }
+.ccd.r { background: #ef4444; }
+.ccd.y { background: #f59e0b; }
+.ccd.g { background: #10b981; }
+.cc-name { font-size: 10px; color: #64748b; font-family: 'Fira Code', monospace; margin-left: 4px; }
+
+.code-card-body {
+    padding: 16px;
+    font-family: 'Fira Code', monospace;
+    font-size: 11.5px;
+    line-height: 1.9;
+}
+
+.lk { color: #c678dd; }
+.lv { color: #e06c75; }
+.ls { color: #98c379; }
+.ln { color: #d19a66; }
+.lc { color: #61afef; }
+.lg { color: #e5c07b; }
+.lcm { color: #5c6370; font-style: italic; }
+
+/* Glow border animation on code card */
+.code-card-glow {
+    position: absolute;
+    inset: -2px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #00d4ff, #7c3aed, #00d4ff);
+    background-size: 200% 200%;
+    animation: glowBorder 4s linear infinite;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+@keyframes glowBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Decorative elements */
+.deco-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(0,212,255,0.1);
+}
+
+.deco-1 { width: 200px; height: 200px; top: -60px; right: -40px; }
+.deco-2 { width: 120px; height: 120px; top: -20px; right: 0px; }
+.deco-3 { width: 80px; height: 80px; bottom: 60px; left: 20px; border-color: rgba(124,58,237,0.2); }
+
+/* Top right badge */
+.sale-ribbon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #ff2d55, #ff6b35);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 15px rgba(255,45,85,0.4);
+    animation: ribbonPulse 2s ease-in-out infinite;
+}
+
+@keyframes ribbonPulse {
+    0%,100% { transform: scale(1); box-shadow:0 4px 15px rgba(255,45,85,0.4); }
+    50% { transform: scale(1.04); box-shadow:0 6px 25px rgba(255,45,85,0.6); }
+}
+
+/* Bottom bar */
+.banner-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #00d4ff, #7c3aed, #00d4ff);
+    background-size: 200% 100%;
+    animation: bottomSlide 3s linear infinite;
+}
+
+@keyframes bottomSlide {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+}
+
+/* Skills strip */
+.skills-strip {
+    position: absolute;
+    bottom: 18px;
+    left: 60px;
+    display: flex;
+    gap: 8px;
+}
+
+.skill-pill {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50px;
+    padding: 4px 12px;
+    font-size: 9.5px;
+    color: #64748b;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   BANNER 2 — WIDE BANNER (1200x400)
+   ============================================ */
+.banner2 {
+    width: 1200px;
+    height: 380px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #0a0e17;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+}
+
+.b2-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 10% 50%, rgba(0,212,255,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 50%, rgba(124,58,237,0.15) 0%, transparent 50%),
+        linear-gradient(135deg, #080c14, #0d1420);
+}
+
+.b2-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+.b2-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 70px;
+    gap: 60px;
+}
+
+.b2-left {
+    flex: 1;
+}
+
+.b2-tag {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: #00d4ff;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.b2-tag::before {
+    content: '>';
+    color: #7c3aed;
+    font-size: 14px;
+}
+
+.b2-name {
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -3px;
+    margin-bottom: 12px;
+}
+
+.b2-name .b2n1 { color: #fff; }
+.b2-name .b2n2 {
+    background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.b2-desc {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 28px;
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+.b2-stats {
+    display: flex;
+    gap: 30px;
+}
+
+.b2-stat {
+    text-align: left;
+}
+
+.b2-stat-num {
+    font-size: 26px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #00d4ff, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.b2-stat-label {
+    font-size: 10px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-top: 3px;
+}
+
+.b2-divider {
+    width: 1px;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, rgba(0,212,255,0.3), transparent);
+}
+
+.b2-right {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 380px;
+}
+
+.b2-price-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.b2-price-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #00d4ff, #7c3aed);
+}
+
+.b2-price-card.sale {
+    background: rgba(255,45,85,0.08);
+    border-color: rgba(255,45,85,0.25);
+}
+
+.b2-price-card.sale::before {
+    background: linear-gradient(to bottom, #ff2d55, #ff6b35);
+}
+
+.b2-pc-left h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 3px;
+    color: #fff;
+}
+
+.b2-pc-left p {
+    font-size: 10px;
+    color: #64748b;
+}
+
+.b2-pc-right {
+    text-align: right;
+}
+
+.b2-pc-usd {
+    font-size: 18px;
+    font-weight: 800;
+    color: #00d4ff;
+    display: block;
+    line-height: 1;
+}
+
+.b2-pc-rbx {
+    font-size: 11px;
+    color: #10b981;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.b2-pc-sale {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ff6b35;
+    display: block;
+    line-height: 1;
+}
+
+.b2-discord-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #5865F2;
+    color: #fff;
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.b2-discord-btn i { font-size: 16px; }
+
+.b2-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #00d4ff, #7c3aed, #00d4ff);
+    background-size: 200%;
+    animation: bottomSlide 3s linear infinite;
+}
+
+/* ============================================
+   BANNER 3 — SQUARE (600x600) Profile/Avatar Banner
+   ============================================ */
+.banner3 {
+    width: 600px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #0a0e17;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+}
+
+.b3-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 50% 30%, rgba(0,212,255,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(124,58,237,0.2) 0%, transparent 50%),
+        #0a0e17;
+}
+
+.b3-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridMove 15s linear infinite;
+}
+
+.b3-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.b3-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0a0e17, #1a1f2e);
+    border: 3px solid rgba(0,212,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow: 0 0 40px rgba(0,212,255,0.2);
+}
+
+.b3-avatar::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 2px dashed rgba(0,212,255,0.2);
+    animation: spin 15s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.b3-avatar-icon {
+    background: linear-gradient(135deg, #00d4ff, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.b3-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(16,185,129,0.1);
+    border: 1px solid rgba(16,185,129,0.3);
+    padding: 5px 14px;
+    border-radius: 50px;
+    font-size: 10px;
+    color: #10b981;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.b3-status::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    animation: tagPulse 1.5s ease-in-out infinite;
+}
+
+.b3-name {
+    font-size: 50px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.b3-name .b3n1 { color: #fff; }
+.b3-name .b3n2 {
+    background: linear-gradient(135deg, #00d4ff, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.b3-role {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 25px;
+    font-family: 'Fira Code', monospace;
+    letter-spacing: 1px;
+}
+
+.b3-prices {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.b3-price {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 12px 18px;
+    text-align: center;
+    position: relative;
+}
+
+.b3-price::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 10px; right: 10px;
+    height: 2px;
+    background: linear-gradient(90deg, #00d4ff, #7c3aed);
+    border-radius: 2px;
+}
+
+.b3-price-tier {
+    font-size: 9px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.b3-price-val {
+    font-size: 14px;
+    font-weight: 800;
+    color: #fff;
+    display: block;
+    line-height: 1.1;
+}
+
+.b3-price-rbx {
+    font-size: 10px;
+    color: #10b981;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.b3-sale-box {
+    background: rgba(255,45,85,0.1);
+    border: 1px solid rgba(255,45,85,0.3);
+    border-radius: 50px;
+    padding: 10px 24px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #ff6b35;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: ribbonPulse 2s ease-in-out infinite;
+}
+
+.b3-discord {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.b3-discord i { color: #5865F2; font-size: 18px; }
+.b3-discord strong { color: #fff; font-size: 14px; }
+
+.b3-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #00d4ff, #7c3aed, #00d4ff);
+    background-size: 200%;
+    animation: bottomSlide 3s linear infinite;
+}
+
+/* LABELS */
+.banner-label {
+    color: #94a3b8;
+    font-size: 14px;
+    font-family: 'Fira Code', monospace;
+    text-align: center;
+    padding: 8px 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* SCREENSHOT HINT */
+.hint {
+    color: #64748b;
+    font-size: 13px;
+    text-align: center;
+    font-family: 'Fira Code', monospace;
+    padding: 15px 30px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.05);
+    max-width: 700px;
+    line-height: 1.8;
+}
+
+.hint span { color: #00d4ff; }
+</style>
+</head>
+<body>
+
+<div class="hint">
+    <span>How to screenshot:</span><br>
+    Windows: Press <span>Windows + Shift + S</span> → drag over the banner → paste in Discord<br>
+    Mac: Press <span>Cmd + Shift + 4</span> → drag over the banner<br>
+    Or right-click the page → Print → Save as PDF → screenshot from PDF
+</div>
+
+<!-- BANNER 1: Main Square Commission Banner -->
+<div class="banner-label">// BANNER 1 — Main Commission Banner (960×540)</div>
+<div class="banner" id="banner1">
+    <div class="banner-bg"></div>
+    <div class="banner-grid"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <div class="banner-particles" id="bp1"></div>
+    <div class="deco-circle deco-1"></div>
+    <div class="deco-circle deco-2"></div>
+    <div class="deco-circle deco-3"></div>
+
+    <div class="sale-ribbon">🔥 OPEN FOR COMMISSIONS</div>
+
+    <div class="banner-content">
+        <div class="banner-left">
+            <div class="banner-top-tag">Roblox Lua Scripter</div>
+            <div class="banner-name">
+                <span class="n1">Jumping</span><span class="n2">Lury</span>
+            </div>
+            <div class="banner-sub">Intermediate Scripter · 1 Year Experience</div>
+
+            <div class="banner-prices">
+                <div class="price-box">
+                    <div class="price-box-label">Minimum</div>
+                    <div class="price-box-usd">$50</div>
+                    <div class="price-box-rbx">R$ 3,000</div>
+                </div>
+                <div class="price-box highlight">
+                    <div class="price-box-label">Mid Range</div>
+                    <div class="price-box-usd">$85+</div>
+                    <div class="price-box-rbx">R$ 7,000</div>
+                </div>
+                <div class="price-box">
+                    <div class="price-box-label">Full Game</div>
+                    <div class="price-box-usd">$350+</div>
+                    <div class="price-box-rbx">R$ 30,000</div>
+                </div>
+                <div class="price-box" style="border-color:rgba(255,107,53,0.4);background:rgba(255,45,85,0.06);">
+                    <div class="price-box-label" style="color:#ff6b35;">🔥 SALE</div>
+                    <div class="price-box-usd" style="color:#ff6b35;">Full Obby</div>
+                    <div class="price-box-rbx" style="color:#ff6b35;">R$ 10,000</div>
+                </div>
+            </div>
+
+            <div class="banner-cta">
+                <div class="cta-btn"><i class="fab fa-discord"></i> DM to Hire</div>
+                <div class="cta-discord"><i class="fab fa-discord"></i> <span>jumpinglury</span></div>
+            </div>
+        </div>
+
+        <div class="banner-right">
+            <div class="code-card-glow"></div>
+            <div class="code-card">
+                <div class="code-card-header">
+                    <div class="cc-dots"><div class="ccd r"></div><div class="ccd y"></div><div class="ccd g"></div></div>
+                    <div class="cc-name">commission.lua</div>
+                </div>
+                <div class="code-card-body">
+<span class="lcm">-- Open for commissions!</span>
+<span class="lk">local</span> <span class="lv">JumpingLury</span> = {
+  <span class="lg">Name</span> = <span class="ls">"JumpingLury"</span>,
+  <span class="lg">Level</span> = <span class="ls">"Intermediate"</span>,
+  <span class="lg">MinPrice</span> = <span class="ls">"R$ 3,000"</span>,
+  <span class="lg">Available</span> = <span class="ln">true</span>,
+}
+
+<span class="lk">function</span> <span class="lc">Hire</span>(<span class="lv">project</span>)
+  <span class="lk">if</span> JumpingLury.Available <span class="lk">then</span>
+    <span class="lc">print</span>(<span class="ls">"DM me on Discord!"</span>)
+    <span class="lk">return</span> <span class="ln">true</span>
+  <span class="lk">end</span>
+<span class="lk">end</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="skills-strip">
+        <div class="skill-pill">Lua / Luau</div>
+        <div class="skill-pill">UI Systems</div>
+        <div class="skill-pill">DataStores</div>
+        <div class="skill-pill">Combat</div>
+        <div class="skill-pill">Lobby Systems</div>
+        <div class="skill-pill">Obby</div>
+    </div>
+
+    <div class="banner-bottom"></div>
+</div>
+
+<!-- BANNER 2: Wide Banner -->
+<div class="banner-label">// BANNER 2 — Wide Banner (1200×380)</div>
+<div class="banner2" id="banner2">
+    <div class="b2-bg"></div>
+    <div class="b2-grid"></div>
+
+    <div class="b2-content">
+        <div class="b2-left">
+            <div class="b2-tag">Open For Commissions</div>
+            <div class="b2-name">
+                <span class="b2n1">Jumping</span><span class="b2n2">Lury</span>
+            </div>
+            <div class="b2-desc">Intermediate Roblox Lua Scripter · 1 Year Experience · Fast Delivery · Quality Code</div>
+            <div class="b2-stats">
+                <div class="b2-stat"><div class="b2-stat-num">1+</div><div class="b2-stat-label">Year Exp</div></div>
+                <div class="b2-stat"><div class="b2-stat-num">15+</div><div class="b2-stat-label">Projects</div></div>
+                <div class="b2-stat"><div class="b2-stat-num">10+</div><div class="b2-stat-label">Clients</div></div>
+                <div class="b2-stat"><div class="b2-stat-num">R$3k</div><div class="b2-stat-label">Minimum</div></div>
+            </div>
+        </div>
+
+        <div class="b2-divider"></div>
+
+        <div class="b2-right">
+            <div class="b2-price-card">
+                <div class="b2-pc-left"><h4>Small Scripts</h4><p>Mechanics, UI, Bug Fixes</p></div>
+                <div class="b2-pc-right"><span class="b2-pc-usd">$50+</span><div class="b2-pc-rbx">R$ 3,000+</div></div>
+            </div>
+            <div class="b2-price-card">
+                <div class="b2-pc-left"><h4>Medium Projects</h4><p>Full Systems, DataStores, Combat</p></div>
+                <div class="b2-pc-right"><span class="b2-pc-usd">$85+</span><div class="b2-pc-rbx">R$ 7,000+</div></div>
+            </div>
+            <div class="b2-price-card">
+                <div class="b2-pc-left"><h4>Full Game</h4><p>Complete Scripting Package</p></div>
+                <div class="b2-pc-right"><span class="b2-pc-usd">$350+</span><div class="b2-pc-rbx">R$ 30,000+</div></div>
+            </div>
+            <div class="b2-price-card sale">
+                <div class="b2-pc-left"><h4>🔥 Full Obby Package</h4><p>Limited Time Deal!</p></div>
+                <div class="b2-pc-right"><span class="b2-pc-sale">R$ 10,000</span><div class="b2-pc-rbx">Was R$30,000+</div></div>
+            </div>
+            <div class="b2-discord-btn"><i class="fab fa-discord"></i> discord: jumpinglury</div>
+        </div>
+    </div>
+
+    <div class="b2-bottom"></div>
+</div>
+
+<!-- BANNER 3: Square Profile Banner -->
+<div class="banner-label">// BANNER 3 — Square Profile Banner (600×600)</div>
+<div class="banner3" id="banner3">
+    <div class="b3-bg"></div>
+    <div class="b3-grid"></div>
+
+    <div class="b3-content">
+        <div class="b3-avatar">
+            <span class="b3-avatar-icon"><i class="fas fa-gamepad"></i></span>
+        </div>
+        <div class="b3-status">Available for Hire</div>
+        <div class="b3-name"><span class="b3n1">Jumping</span><span class="b3n2">Lury</span></div>
+        <div class="b3-role">// Roblox Lua Scripter · 1 Year Exp</div>
+
+        <div class="b3-prices">
+            <div class="b3-price">
+                <div class="b3-price-tier">Min</div>
+                <span class="b3-price-val">$50</span>
+                <div class="b3-price-rbx">R$ 3,000</div>
+            </div>
+            <div class="b3-price">
+                <div class="b3-price-tier">Mid</div>
+                <span class="b3-price-val">$85+</span>
+                <div class="b3-price-rbx">R$ 7,000</div>
+            </div>
+            <div class="b3-price">
+                <div class="b3-price-tier">Full</div>
+                <span class="b3-price-val">$350+</span>
+                <div class="b3-price-rbx">R$ 30k+</div>
+            </div>
+        </div>
+
+        <div class="b3-sale-box">🔥 Full Obby Package — R$ 10,000 Only!</div>
+
+        <div class="b3-discord"><i class="fab fa-discord"></i> <strong>jumpinglury</strong></div>
+    </div>
+
+    <div class="b3-bottom"></div>
+</div>
+
+<div class="hint">
+    <span>Tip:</span> Use <span>Windows + Shift + S</span> to snip exactly around each banner.<br>
+    Then paste directly into Discord or save as PNG.
+</div>
+
+<script>
+// Add particles to banner 1
+var bp1 = document.getElementById("bp1");
+for (var i = 0; i < 20; i++) {
+    var p = document.createElement("div");
+    p.className = "bp";
+    var size = Math.random() * 3 + 1;
+    p.style.cssText = "width:" + size + "px;height:" + size + "px;left:" + Math.random() * 100 + "%;animation-duration:" + (Math.random() * 15 + 8) + "s;animation-delay:" + (Math.random() * 15) + "s;background:" + (Math.random() > 0.5 ? "#00d4ff" : "#7c3aed") + ";";
+    bp1.appendChild(p);
+}
+</script>
+</body>
+</html>
